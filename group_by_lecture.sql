@@ -75,7 +75,13 @@ ORDER BY MIN(salary);
 
 
 
+# get the average age of each first name
 
+select ROUND(DATEDIFF(NOW(), birth_date) / 365) from employees
+GROUP BY emp_no;
+
+select first_name, AVG from employees
+group by first_name;
 
 
 
