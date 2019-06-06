@@ -123,6 +123,19 @@ INSERT INTO users (name, email, role_id) VALUES
 ('jane', 'jane@example.com', null),
 ('mike', 'mike@example.com', null);
 
+
+# First part of join exercise
+INSERT INTO users (name, email, role_id)
+VALUES
+('jack', 'jack@example.com', 2),
+('john', 'john@example.com', 2),
+('cathy', 'cathy@example.com', 2),
+('jen', 'jen@example.com', null);
+
+
+
+
+
 SELECT * FROM roles;
 SELECT * FROM users;
 
@@ -148,6 +161,12 @@ SELECT users.name, roles.name
 FROM users
 RIGHT JOIN roles
 ON roles.id = users.role_id;
+
+
+SELECT roles.name, COUNT(*) FROM roles
+JOIN users ON users.role_id = roles.id
+GROUP BY roles.name;
+
 
 
 
