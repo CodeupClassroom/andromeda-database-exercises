@@ -24,14 +24,24 @@ SELECT * FROM pets_toys;
 # BASIC JOIN
 # list the name and address of a pet
 
+SELECT pets.name, owners.address FROM pets
+JOIN owners ON owners.id = pets.owner_id;
+
 
 # BASIC JOIN WITH ALIASES
 
+SELECT p.name, o.address FROM pets AS p
+JOIN owners AS o ON o.id = p.owner_id;
 
 
 # JOIN WITH GROUP BY
 
 # List the number of pets at each address
+
+SELECT owners.address, COUNT(*) FROM owners
+JOIN pets ON pets.owner_id = owners.id
+GROUP BY owners.address;
+
 
 
 # JOIN WITH GROUP BY AND ORDER BY
@@ -46,10 +56,17 @@ LIMIT 1;
 # MULTIPLE JOINS
 
 # List the pet name and toy type
-
+SELECT pets.name, toys.type FROM pets
+JOIN pets_toys ON pets_toys.pet_id = pets.id
+JOIN toys ON toys.id = pets_toys.toy_id;
 
 
 # List the name of pet, owner and toy type
+SELECT p.name, o.name, t.type FROM pets AS p
+JOIN pets_toys AS pt ON pt.pet_id = p.id
+JOIN toys AS t ON t.id = pt.toy_id
+JOIN owners AS o ON o.id = p.owner_id;
+
 
 
 
