@@ -30,4 +30,12 @@ where emp_no in (
     )
 );
 
+select first_name,last_name, (select max(salary) from salaries) as Salary from employees
+where emp_no in (
+    select emp_no from salaries
+    where salary =(
+        select max(salary) from salaries
+    )
+);
+
 # Homework: Stored Procedures / Union
